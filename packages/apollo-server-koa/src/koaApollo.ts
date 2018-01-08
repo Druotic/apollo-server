@@ -29,7 +29,7 @@ export function graphqlKoa(options: GraphQLOptions | KoaGraphQLOptionsFunction):
       ctx.body = gqlResponse;
     }, (error: HttpQueryError) => {
       if ( 'HttpQueryError' !== error.name ) {
-        throw error;
+        ctx.throw(error);
       }
 
       if ( error.headers ) {
